@@ -1,5 +1,7 @@
 <div align="center">
 
+<a name="top"></a>
+
 # 🐘 Learn Gradle
 
 ### *The Definitive Guide to Mastering Gradle Build Automation*
@@ -13,7 +15,7 @@
 
 **A comprehensive, hands-on reference** for everything Gradle — from installation and project creation to advanced dependency management, plugin development, and multi-project architectures.
 
-[Standards](#standards--best-practices-quick-ref) •
+[Standards](#standards) •
 [Installation](#installation) •
 [Quick Start](#quick-start) •
 [Project Types](#available-project-types) •
@@ -25,7 +27,7 @@
 
 </div>
 
-## 🔝 Standards & Best Practices (Quick Ref)
+<h2 id="standards">🔝 Standards & Best Practices (Quick Ref) <a href="#top" style="float: right;">🔝</a></h2>
 
 > [!IMPORTANT]
 > Use this section as a frequent reference for maintaining high-quality Gradle builds.
@@ -42,12 +44,12 @@
 
 ---
 
-## 📖 Table of Contents
+<h2 id="toc">📖 Table of Contents <a href="#top" style="float: right;">🔝</a></h2>
 
 <details>
 <summary><b>Click to expand full table of contents</b></summary>
 
-- [🔝 Standards & Best Practices](#standards--best-practices-quick-ref)
+- [🔝 Standards & Best Practices](#standards)
 - [🚀 Installation](#installation)
   - [Using SDKMAN!](#using-sdkman-recommended)
   - [Using Homebrew](#using-homebrew-macos)
@@ -69,7 +71,7 @@
 - [🔗 Dependency Management](#dependency-management)
   - [Declaring Dependencies](#declaring-dependencies)
   - [Dependency Configurations](#dependency-configurations)
-  - [Version Catalogs](#version-catalogs-libsversiontoml)
+  - [Version Catalogs](#version-catalog)
   - [BOMs & Platforms](#boms--platforms)
   - [Transitive Dependencies](#transitive-dependencies)
   - [Dependency Locking](#dependency-locking)
@@ -96,7 +98,7 @@
 
 ---
 
-## 🚀 Installation
+<h2 id="installation">🚀 Installation <a href="#top" style="float: right;">🔝</a></h2>
 
 ### Using SDKMAN! (Recommended)
 
@@ -166,7 +168,7 @@ OS:            Linux 6.x amd64
 
 ---
 
-## ⚡ Quick Start
+<h2 id="quick-start">⚡ Quick Start <a href="#top" style="float: right;">🔝</a></h2>
 
 ### 🎮 Interactive Mode
 
@@ -279,7 +281,7 @@ gradle init \
 
 ---
 
-## 🚀 Sample Projects
+<h2 id="sample-projects">🚀 Sample Projects <a href="#top" style="float: right;">🔝</a></h2>
 
 > [!TIP]
 > This repository includes functional sample projects demonstrating the best practices described here.
@@ -291,9 +293,9 @@ gradle init \
 
 ---
 
-## 🏗️ Project Structure
+<h2 id="project-structure">🏗️ Project Structure <a href="#top" style="float: right;">🔝</a></h2>
 
-### Single Project Layout
+<h3 id="single-project-layout">Single Project Layout</h3>
 
 Typically used for standalone applications or simple libraries.
 
@@ -312,7 +314,7 @@ my-single-project/
         └── 📁 test/                 # Test source
 ```
 
-### Multi-Project Layout
+<h3 id="multi-project-layout">Multi-Project Layout</h3>
 
 Designed for modularized systems with shared logic.
 
@@ -398,7 +400,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 
 ---
 
-## 📦 Single vs Multi-Project
+<h2 id="single-vs-multi-project">📦 Single vs Multi-Project <a href="#top" style="float: right;">🔝</a></h2>
 
 ### 📌 Single Project
 
@@ -530,9 +532,9 @@ include("app")
 
 ---
 
-## 🔗 Dependency Management
+<h2 id="dependency-management">🔗 Dependency Management <a href="#top" style="float: right;">🔝</a></h2>
 
-### Declaring Dependencies
+<h3 id="declaring-dependencies">Declaring Dependencies</h3>
 
 ```kotlin
 // build.gradle.kts
@@ -552,7 +554,7 @@ dependencies {
 }
 ```
 
-### Dependency Configurations
+<h3 id="dependency-configurations">Dependency Configurations</h3>
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -593,7 +595,7 @@ dependencies {
 }
 ```
 
-### 📋 Version Catalogs (`libs.versions.toml`)
+<h3 id="version-catalog">📋 Version Catalogs (libs.versions.toml)</h3>
 
 > [!TIP]
 > Version catalogs are the **recommended** way to manage dependency versions since Gradle 7.0+. They provide a single source of truth and are accessible across all subprojects.
@@ -644,7 +646,7 @@ dependencies {
 }
 ```
 
-### 🌐 BOMs & Platforms
+<h3 id="boms--platforms">🌐 BOMs & Platforms</h3>
 
 Use BOMs (Bill of Materials) to manage groups of related dependency versions:
 
@@ -663,7 +665,7 @@ dependencies {
 }
 ```
 
-### Transitive Dependencies
+<h3 id="transitive-dependencies">Transitive Dependencies</h3>
 
 ```kotlin
 dependencies {
@@ -685,7 +687,7 @@ dependencies {
 // Run: ./gradlew dependencies --configuration runtimeClasspath
 ```
 
-### 🔒 Dependency Locking
+<h3 id="dependency-locking">🔒 Dependency Locking</h3>
 
 Lock file-based dependency locking ensures **reproducible builds**:
 
@@ -706,9 +708,9 @@ dependencyLocking {
 
 ---
 
-## 🔌 Plugin Management
+<h2 id="plugin-management">🔌 Plugin Management <a href="#top" style="float: right;">🔝</a></h2>
 
-### Applying Plugins
+<h3 id="applying-plugins">Applying Plugins</h3>
 
 ```kotlin
 // ✅ Modern plugins block (recommended)
@@ -721,7 +723,7 @@ plugins {
 }
 ```
 
-### Plugin DSL
+<h3 id="plugin-dsl">Plugin DSL</h3>
 
 > [!WARNING]
 > **Avoid the legacy `apply plugin:` syntax** — always use the `plugins { }` block for better performance and type-safe accessors.
@@ -736,7 +738,7 @@ plugins {
 }
 ```
 
-### Plugin Management in Settings
+<h3 id="plugin-management-in-settings">Plugin Management in Settings</h3>
 
 Centralize plugin version management in `settings.gradle.kts`:
 
@@ -760,7 +762,7 @@ rootProject.name = "my-project"
 include("app")
 ```
 
-### 🧩 Convention Plugins
+<h3 id="convention-plugins">🧩 Convention Plugins</h3>
 
 Convention plugins are the **recommended approach** to share build logic across subprojects, replacing `allprojects {}` and `subprojects {}`.
 
@@ -825,7 +827,7 @@ dependencies {
 }
 ```
 
-### Plugin Repositories
+<h3 id="plugin-repositories">Plugin Repositories</h3>
 
 ```kotlin
 // settings.gradle.kts
@@ -847,9 +849,9 @@ pluginManagement {
 
 ---
 
-## 🏷️ Version Management
+<h2 id="version-management">🏷️ Version Management <a href="#top" style="float: right;">🔝</a></h2>
 
-### 🔄 Gradle Wrapper
+<h3 id="gradle-wrapper">🔄 Gradle Wrapper</h3>
 
 The Gradle Wrapper ensures **everyone uses the same Gradle version**. Always commit it to source control.
 
@@ -882,7 +884,7 @@ zipStorePath=wrapper/dists
 > - `gradle/wrapper/gradle-wrapper.jar`
 > - `gradle/wrapper/gradle-wrapper.properties`
 
-### ☕ Java Toolchains
+<h3 id="java-toolchains">☕ Java Toolchains</h3>
 
 Decouple your build from the locally installed JDK:
 
@@ -903,7 +905,7 @@ plugins {
 }
 ```
 
-### Managing Versions Centrally
+<h3 id="managing-versions-centrally">Managing Versions Centrally</h3>
 
 Use `gradle.properties` for project-wide version properties:
 
@@ -921,9 +923,9 @@ Use version catalogs (`libs.versions.toml`) for dependency and plugin versions �
 
 ---
 
-## ⚙️ Task Management
+<h2 id="task-management">⚙️ Task Management <a href="#top" style="float: right;">🔝</a></h2>
 
-### Built-in Tasks
+<h3 id="built-in-tasks">Built-in Tasks</h3>
 
 ```bash
 # List all available tasks
@@ -949,7 +951,7 @@ Use version catalogs (`libs.versions.toml`) for dependency and plugin versions �
 ./gradlew model                # Display project model
 ```
 
-### Custom Tasks
+<h3 id="custom-tasks">Custom Tasks</h3>
 
 ```kotlin
 // build.gradle.kts
@@ -984,7 +986,7 @@ tasks.register<GenerateReport>("generateReport") {
 }
 ```
 
-### Task Dependencies
+<h3 id="task-dependencies">Task Dependencies</h3>
 
 ```kotlin
 tasks.register("fullBuild") {
@@ -1005,7 +1007,7 @@ tasks.named("test") {
 
 ---
 
-## 🧪 Testing
+<h2 id="testing">🧪 Testing <a href="#top" style="float: right;">🔝</a></h2>
 
 ```kotlin
 // build.gradle.kts
@@ -1065,7 +1067,7 @@ tasks.test {
 
 ---
 
-## 🚀 Build Optimization
+<h2 id="build-optimization">🚀 Build Optimization <a href="#top" style="float: right;">🔝</a></h2>
 
 Add these to your **`gradle.properties`** for faster builds:
 
@@ -1100,7 +1102,7 @@ org.gradle.logging.level=lifecycle
 
 ---
 
-## 📝 Best Practices
+<h2 id="best-practices">📝 Best Practices <a href="#top" style="float: right;">🔝</a></h2>
 
 ### ✅ Do
 
@@ -1160,7 +1162,7 @@ Thumbs.db
 
 ---
 
-## 📚 Resources
+<h2 id="resources">📚 Resources <a href="#top" style="float: right;">🔝</a></h2>
 
 ### Official Documentation
 
