@@ -170,7 +170,7 @@ OS:            Linux 6.x amd64
 
 <h2 id="quick-start">⚡ Quick Start <a href="#top" style="float: right;">🔝</a></h2>
 
-### 🎮 Interactive Mode
+<h3 id="interactive-mode">🎮 Interactive Mode</h3>
 
 The interactive mode guides you step-by-step through project creation with prompts:
 
@@ -219,7 +219,7 @@ Project name (default: my-project):
 Source package (default: org.example):
 ```
 
-### 🤖 Non-Interactive Mode
+<h3 id="non-interactive-mode">🤖 Non-Interactive Mode</h3>
 
 For automation, CI/CD pipelines, and scripting — create projects with a single command:
 
@@ -402,7 +402,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 
 <h2 id="single-vs-multi-project">📦 Single vs Multi-Project <a href="#top" style="float: right;">🔝</a></h2>
 
-### 📌 Single Project
+<h3 id="single-project">📌 Single Project</h3>
 
 A single project build has **one subproject** (usually called `app` or the project name itself).
 
@@ -447,7 +447,7 @@ application {
 
 ---
 
-### 🏢 Multi-Project
+<h3 id="multi-project">🏢 Multi-Project</h3>
 
 A multi-project build contains **multiple subprojects** (modules) under a single root. The subprojects can depend on each other.
 
@@ -508,7 +508,7 @@ application {
 
 ---
 
-### 🧱 Composite Builds
+<h3 id="composite-builds">🧱 Composite Builds</h3>
 
 Composite builds let you **include independent builds** as dependencies of another build. This is great for developing libraries alongside your application.
 
@@ -1104,7 +1104,7 @@ org.gradle.logging.level=lifecycle
 
 <h2 id="best-practices">📝 Best Practices <a href="#top" style="float: right;">🔝</a></h2>
 
-### ✅ Do
+<h3 id="do">✅ Do</h3>
 
 | # | Practice | Why |
 |:-:|:---------|:----|
@@ -1119,7 +1119,7 @@ org.gradle.logging.level=lifecycle
 | 9 | **Define task inputs/outputs** | Enables incremental builds and caching |
 | 10 | **Use `dependencyLocking`** | Ensures reproducible dependency resolution |
 
-### ❌ Don't
+<h3 id="dont">❌ Don't</h3>
 
 | # | Anti-Pattern | Better Alternative |
 |:-:|:-------------|:-------------------|
@@ -1132,7 +1132,7 @@ org.gradle.logging.level=lifecycle
 | 7 | ~~`buildscript { }` block~~ for plugins | `plugins { }` block |
 | 8 | ~~Invoking `gradle` directly~~ | Use `./gradlew` wrapper |
 
-### 📁 Recommended `.gitignore`
+<h3 id="gitignore-best-practice">📁 Recommended .gitignore</h3>
 
 ```gitignore
 # Gradle
@@ -1193,7 +1193,7 @@ Thumbs.db
 
 <div align="center">
 
-### 🎓 Happy Building!
+<h3 id="happy-building">🎓 Happy Building!</h3>
 
 *Made with 💚 for the Gradle community*
 
