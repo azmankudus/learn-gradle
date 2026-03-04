@@ -57,6 +57,7 @@
   - [Interactive Mode](#-interactive-mode)
   - [Non-Interactive Mode](#-non-interactive-mode)
   - [Available Project Types](#available-project-types)
+- [🚀 Sample Projects](#-sample-projects)
 - [🏗️ Project Structure](#️-project-structure)
   - [Standard Layout](#standard-project-layout)
   - [Key Files Explained](#key-files-explained)
@@ -273,6 +274,18 @@ gradle init \
 | 📘 **Scala Library** | `scala-library` | Reusable Scala library |
 | ⚙️ **C++ App** | `cpp-application` | Executable C++ application |
 | 📙 **C++ Library** | `cpp-library` | Reusable C++ library |
+
+---
+
+## 🚀 Sample Projects
+
+> [!TIP]
+> This repository includes functional sample projects demonstrating the best practices described here.
+
+| Sample | Description | Key Features |
+|:---|:---|:---|
+| [**Single Project**](./samples/single-project) | Minimal standalone application | Kotlin DSL, JUnit 5, Standard Layout |
+| [**Multi Project**](./samples/multi-project) | Professional modular architecture | `buildSrc` Convention Plugins, Version Catalogs, Inter-module dependencies |
 
 ---
 
