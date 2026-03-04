@@ -13,13 +13,13 @@
 
 **A comprehensive, hands-on reference** for everything Gradle — from installation and project creation to advanced dependency management, plugin development, and multi-project architectures.
 
-[Standards](#-standards--best-practices-quick-ref) •
-[Installation](#-installation) •
-[Quick Start](#-quick-start) •
-[Project Types](#-single-vs-multi-project) •
-[Dependencies](#-dependency-management) •
-[Plugins](#-plugin-management) •
-[Best Practices](#-best-practices)
+[Standards](#standards--best-practices-quick-ref) •
+[Installation](#installation) •
+[Quick Start](#quick-start) •
+[Project Types](#available-project-types) •
+[Dependencies](#dependency-management) •
+[Plugins](#plugin-management) •
+[Best Practices](#best-practices)
 
 ---
 
@@ -47,48 +47,50 @@
 <details>
 <summary><b>Click to expand full table of contents</b></summary>
 
-- [🔝 Standards & Best Practices](#-standards--best-practices-quick-ref)
-- [🚀 Installation](#-installation)
+- [🔝 Standards & Best Practices](#standards--best-practices-quick-ref)
+- [🚀 Installation](#installation)
   - [Using SDKMAN!](#using-sdkman-recommended)
   - [Using Homebrew](#using-homebrew-macos)
   - [Manual Installation](#manual-installation)
   - [Verify Installation](#verify-installation)
-- [⚡ Quick Start](#-quick-start)
-  - [Interactive Mode](#-interactive-mode)
-  - [Non-Interactive Mode](#-non-interactive-mode)
+- [⚡ Quick Start](#quick-start)
+  - [Interactive Mode](#interactive-mode)
+  - [Non-Interactive Mode](#non-interactive-mode)
   - [Available Project Types](#available-project-types)
-- [🚀 Sample Projects](#-sample-projects)
-- [🏗️ Project Structure](#️-project-structure)
-  - [Standard Layout](#standard-project-layout)
+- [🚀 Sample Projects](#sample-projects)
+- [🏗️ Project Structure](#project-structure)
+  - [Single Project Layout](#single-project-layout)
+  - [Multi-Project Layout](#multi-project-layout)
   - [Key Files Explained](#key-files-explained)
-- [📦 Single vs Multi-Project](#-single-vs-multi-project)
-  - [Single Project Setup](#-single-project)
-  - [Multi-Project Setup](#-multi-project)
-  - [Composite Builds](#-composite-builds)
-- [🔗 Dependency Management](#-dependency-management)
+- [📦 Single vs Multi-Project](#single-vs-multi-project)
+  - [Single Project Setup](#single-project)
+  - [Multi-Project Setup](#multi-project)
+  - [Composite Builds](#composite-builds)
+- [🔗 Dependency Management](#dependency-management)
   - [Declaring Dependencies](#declaring-dependencies)
   - [Dependency Configurations](#dependency-configurations)
-  - [Version Catalogs](#-version-catalogs-libsversiontoml)
-  - [BOMs & Platforms](#-boms--platforms)
+  - [Version Catalogs](#version-catalogs-libsversiontoml)
+  - [BOMs & Platforms](#boms--platforms)
   - [Transitive Dependencies](#transitive-dependencies)
-  - [Dependency Locking](#-dependency-locking)
-- [🔌 Plugin Management](#-plugin-management)
+  - [Dependency Locking](#dependency-locking)
+- [🔌 Plugin Management](#plugin-management)
   - [Applying Plugins](#applying-plugins)
   - [Plugin DSL](#plugin-dsl)
-  - [Convention Plugins](#-convention-plugins)
+  - [Plugin Management in Settings](#plugin-management-in-settings)
+  - [🧩 Convention Plugins](#convention-plugins)
   - [Plugin Repositories](#plugin-repositories)
-- [🏷️ Version Management](#️-version-management)
-  - [Gradle Wrapper](#-gradle-wrapper)
-  - [Java Toolchains](#-java-toolchains)
-  - [Version Catalogs](#managing-versions-centrally)
-- [⚙️ Task Management](#️-task-management)
+- [🏷️ Version Management](#version-management)
+  - [Gradle Wrapper](#gradle-wrapper)
+  - [Java Toolchains](#java-toolchains)
+  - [Managing Versions Centrally](#managing-versions-centrally)
+- [⚙️ Task Management](#task-management)
   - [Built-in Tasks](#built-in-tasks)
   - [Custom Tasks](#custom-tasks)
   - [Task Dependencies](#task-dependencies)
-- [🧪 Testing](#-testing)
-- [🚀 Build Optimization](#-build-optimization)
-- [📝 Best Practices](#-best-practices)
-- [📚 Resources](#-resources)
+- [🧪 Testing](#testing)
+- [🚀 Build Optimization](#build-optimization)
+- [📝 Best Practices](#best-practices)
+- [📚 Resources](#resources)
 
 </details>
 
@@ -291,29 +293,42 @@ gradle init \
 
 ## 🏗️ Project Structure
 
-### Standard Project Layout
+### Single Project Layout
+
+Typically used for standalone applications or simple libraries.
 
 ```
-my-project/
+my-single-project/
 ├── 📄 .gitignore                    # Git ignore rules
-├── 📄 gradle.properties             # Project-wide Gradle settings
-├── 📄 settings.gradle.kts           # Build settings & subproject includes
-├── 📁 gradle/
-│   ├── 📄 libs.versions.toml        # Version catalog (dependency versions)
+├── 📄 gradle.properties             # Project-wide settings
+├── 📄 settings.gradle.kts           # Defines project name
+├── 📁 gradle/                       # Gradle wrapper files
 │   └── 📁 wrapper/
-│       ├── 📄 gradle-wrapper.jar    # Wrapper JAR (auto-downloads Gradle)
-│       └── 📄 gradle-wrapper.properties  # Wrapper configuration
-├── 📄 gradlew                       # Gradle Wrapper script (Unix)
-├── 📄 gradlew.bat                   # Gradle Wrapper script (Windows)
-└── 📁 app/                          # Subproject (module)
-    ├── 📄 build.gradle.kts          # Subproject build script
+├── 📄 gradlew                       # Wrapper script
+└── 📁 app/                          # Main module
+    ├── 📄 build.gradle.kts          # Dependencies & tasks
     └── 📁 src/
-        ├── 📁 main/
-        │   ├── 📁 java/             # Production source code
-        │   └── 📁 resources/        # Production resources
-        └── 📁 test/
-            ├── 📁 java/             # Test source code
-            └── 📁 resources/        # Test resources
+        ├── 📁 main/                 # App source
+        └── 📁 test/                 # Test source
+```
+
+### Multi-Project Layout
+
+Designed for modularized systems with shared logic.
+
+```
+my-multi-project/
+├── 📁 .github/                      # CI/CD workflows
+├── 📄 .gitignore                    # Shared ignore rules
+├── 📄 settings.gradle.kts           # Includes all submodules
+├── 📁 gradle/
+│   └── 📄 libs.versions.toml        # Shared Version Catalog
+├── 📁 buildSrc/                     # Shared Convention Plugins
+│   └── 📁 src/main/kotlin/
+├── 📁 api/                          # Interface module
+├── 📁 core/                         # Implementation module
+└── 📁 app/                          # Executable module
+    └── 📄 build.gradle.kts
 ```
 
 ### Key Files Explained
